@@ -1,0 +1,5 @@
+server:
+  port: 9443
+openweather.api:
+  uri: https://api.openweathermap.org/data/2.5/weather
+  key: 0cb825dd6ce71469a3d5ef68162cb438

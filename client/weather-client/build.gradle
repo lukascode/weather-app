@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.lukascode'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+    implementation 'jakarta.xml.ws:jakarta.xml.ws-api:2.3.3'
+    implementation project(':weather-specification')
+}
+
+test {
+    useJUnitPlatform()
+}

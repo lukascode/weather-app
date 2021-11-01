@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://lukascode.com/WeatherService/types"
+           targetNamespace="http://lukascode.com/WeatherService/types">
+
+    <xs:complexType name="Coordinates">
+        <xs:sequence>
+            <xs:element name="lat" type="xs:double"/>
+            <xs:element name="lon" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Weather">
+        <xs:sequence>
+            <xs:element name="sys" type="Sys"/>
+            <xs:element name="main" type="Main"/>
+            <xs:element name="clouds" type="Clouds"/>
+            <xs:element name="visibility" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Sys">
+        <xs:sequence>
+            <xs:element name="sunrise" type="xs:long"/>
+            <xs:element name="sunset" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Main">
+        <xs:sequence>
+            <xs:element name="temp" type="xs:double"/>
+            <xs:element name="feelsLike" type="xs:double"/>
+            <xs:element name="tempMin" type="xs:double"/>
+            <xs:element name="tempMax" type="xs:double"/>
+            <xs:element name="humidity" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Clouds">
+        <xs:sequence>
+            <xs:element name="all" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

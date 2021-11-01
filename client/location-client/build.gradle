@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.lukascode'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'org.springframework:spring-web:5.3.10'
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,8 @@
+rootProject.name = 'weather-app'
+include 'location'
+include 'weather'
+include 'weather-specification'
+include 'client'
+include 'client:location-client'
+include 'client:weather-client'
+

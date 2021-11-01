@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="WeatherService"
+             targetNamespace="http://lukascode.com/WeatherService"
+             xmlns:tns="http://lukascode.com/WeatherService"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:types>
+        <xs:schema xmlns="http://www.w3.org/2001/XMLSchema"
+                   targetNamespace="http://lukascode.com/WeatherService"
+                   xmlns:types="http://lukascode.com/WeatherService/types">
+            <xs:import namespace="http://lukascode.com/WeatherService/types" schemaLocation="types.xsd"/>
+            <xs:element name="Coordinates" type="types:Coordinates"/>
+            <xs:element name="Weather" type="types:Weather"/>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="GetWeatherRequest">
+        <wsdl:part name="coordinates" element="tns:Coordinates"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetWeatherResponse">
+        <wsdl:part name="weather" element="tns:Weather"/>
+    </wsdl:message>
+
+    <wsdl:portType name="WeatherServiceWS">
+        <wsdl:operation name="GetWeather">
+            <wsdl:input message="tns:GetWeatherRequest"/>
+            <wsdl:output message="tns:GetWeatherResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    
+    <wsdl:binding name="WeatherServiceWS" type="tns:WeatherServiceWS">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetWeather">
+            <soap:operation soapAction="http://lukascode.com/WeatherService/GetWeather"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="WeatherService">
+        <wsdl:port binding="tns:WeatherServiceWS" name="WeatherServiceWS">
+            <soap:address location="http://lukascode.com/WeatherService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
