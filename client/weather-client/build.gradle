@@ -1,20 +1,27 @@
 plugins {
     id 'java'
+    id 'checkstyle'
 }
 
-group 'com.lukascode'
-version '0.0.1-SNAPSHOT'
+group = "$projectGroupId"
+version = "$projectVersion"
+sourceCompatibility = "$javaVersion"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.slf4j:slf4j-api:1.7.32'
-    implementation 'jakarta.xml.ws:jakarta.xml.ws-api:2.3.3'
+    implementation "org.slf4j:slf4j-api:$slf4jVersion"
+    implementation "jakarta.xml.ws:jakarta.xml.ws-api:$jakartaWsApiVersion"
     implementation project(':weather-specification')
 }
 
 test {
     useJUnitPlatform()
+}
+
+checkstyle {
+    configFile = file("$rootProject.projectDir/config/checkstyle/google_checks.xml")
+    ignoreFailures = false
 }

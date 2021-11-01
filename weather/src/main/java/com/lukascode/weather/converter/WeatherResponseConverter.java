@@ -8,12 +8,12 @@ import com.lukascode.weather.ws.Sys;
 public class WeatherResponseConverter {
 
     public com.lukascode.weather.ws.Weather convert(Weather weather) {
-        com.lukascode.weather.ws.Weather weatherDTO = new com.lukascode.weather.ws.Weather();
-        weatherDTO.setVisibility(weather.visibility);
-        weatherDTO.setMain(getMain(weather));
-        weatherDTO.setSys(getSys(weather));
-        weatherDTO.setClouds(getClouds(weather));
-        return weatherDTO;
+        com.lukascode.weather.ws.Weather weatherDto = new com.lukascode.weather.ws.Weather();
+        weatherDto.setVisibility(weather.visibility);
+        weatherDto.setMain(getMain(weather));
+        weatherDto.setSys(getSys(weather));
+        weatherDto.setClouds(getClouds(weather));
+        return weatherDto;
     }
 
     private Main getMain(Weather weather) {

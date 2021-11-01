@@ -20,7 +20,7 @@ public class WebServiceConfig {
     }
 
     @Bean
-    public WeatherServiceWS weatherServiceWS() {
+    public WeatherServiceWS weatherServiceWs() {
         return new WeatherEndpoint();
     }
 

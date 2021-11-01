@@ -1,12 +1,36 @@
-plugins {
-	id 'org.springframework.boot' version '2.5.5'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+buildscript {
+	ext {
+		javaVersion = '11'
+		projectGroupId = 'com.lukascode.weather'
+		projectVersion = '0.0.1-SNAPSHOT'
+		springBootVersion = '2.5.5'
+		springDependencyManagementVersion = '1.0.11.RELEASE'
+		springWebVersion = '5.3.10'
+		gsonVersion = '2.8.8'
+		slf4jVersion = '1.7.32'
+		jakartaWsApiVersion = '2.3.3'
+		jakartaBindApiVersion = '2.3.3'
+		jakartaJAXBVersion = '2.3.3'
+		javaxJwsApiVersion = '1.1'
+		wsdl2javaVersion = '1.2'
+		wiremockVersion = '2.31.0'
+		groovyVersion = '2.0-groovy-3.0'
+		apacheCxfBootVersion = '3.4.5'
+		jsonPathVersion = '2.6.0'
+	}
 }
 
-group = 'com.lukascode'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+plugins {
+	id 'org.springframework.boot' version "$springBootVersion"
+	id 'io.spring.dependency-management' version "$springDependencyManagementVersion"
+	id 'com.github.bjornvester.wsdl2java' version "$wsdl2javaVersion" apply false
+	id 'java'
+	id 'checkstyle'
+}
+
+group = "$projectGroupId"
+version = "$projectVersion"
+sourceCompatibility = "$javaVersion"
 
 repositories {
 	mavenCentral()

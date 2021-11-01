@@ -1,17 +1,18 @@
 plugins {
-    id 'com.github.bjornvester.wsdl2java' version '1.2'
+    id 'com.github.bjornvester.wsdl2java'
 }
 
-group 'com.lukascode'
-version '0.0.1-SNAPSHOT'
+group = "$projectGroupId"
+version = "$projectVersion"
+sourceCompatibility = "$javaVersion"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.3'
-    implementation 'com.sun.xml.bind:jaxb-impl:2.3.3'
+    implementation "jakarta.xml.bind:jakarta.xml.bind-api:$jakartaBindApiVersion"
+    implementation "com.sun.xml.bind:jaxb-impl:$jakartaJAXBVersion"
 }
 
 wsdl2java {

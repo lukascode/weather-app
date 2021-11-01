@@ -19,7 +19,8 @@ public class WeatherConfig {
     }
 
     @Bean
-    public RestTemplate weatherClient(@Value("${openweather.api.uri}") String uri, RestTemplateBuilder builder) {
+    public RestTemplate weatherClient(
+            @Value("${openweather.api.uri}") String uri, RestTemplateBuilder builder) {
         return builder
                 .rootUri(uri)
                 .setConnectTimeout(Duration.ofSeconds(10))

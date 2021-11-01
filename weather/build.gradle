@@ -3,11 +3,12 @@ plugins {
     id 'io.spring.dependency-management'
     id 'java'
     id 'groovy'
+    id 'checkstyle'
 }
 
-group 'com.lukascode'
-version '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+group = "$projectGroupId"
+version = "$projectVersion"
+sourceCompatibility = "$javaVersion"
 
 repositories {
     mavenCentral()
@@ -16,15 +17,20 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web-services'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.apache.cxf:cxf-spring-boot-starter-jaxws:3.4.5'
+    implementation "org.apache.cxf:cxf-spring-boot-starter-jaxws:$apacheCxfBootVersion"
     implementation project(':weather-specification')
-    implementation 'javax.jws:javax.jws-api:1.1'
+    implementation "javax.jws:javax.jws-api:$javaxJwsApiVersion"
     testImplementation project(':client:weather-client')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.spockframework:spock-spring:2.0-groovy-3.0'
-    testImplementation 'com.github.tomakehurst:wiremock-jre8:2.31.0'
+    testImplementation "org.spockframework:spock-spring:$groovyVersion"
+    testImplementation "com.github.tomakehurst:wiremock-jre8:$wiremockVersion"
 }
 
 test {
     useJUnitPlatform()
+}
+
+checkstyle {
+    configFile = file("$rootProject.projectDir/config/checkstyle/google_checks.xml")
+    ignoreFailures = false
 }

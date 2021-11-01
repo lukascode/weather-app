@@ -14,13 +14,13 @@ public class WeatherClient {
     private static final Logger LOG = LoggerFactory.getLogger(WeatherClient.class);
 
     private static final String WEBSERVICE = "/ws/WeatherService?wsdl";
-    private final WeatherServiceWS weatherServiceWS;
+    private final WeatherServiceWS weatherServiceWs;
 
     public WeatherClient(String host) {
         Objects.requireNonNull(host);
         try {
-            URL wsdlURL = new URL(host + WEBSERVICE);
-            weatherServiceWS = new WeatherService(wsdlURL).getWeatherServiceWS();
+            URL wsdlUrl = new URL(host + WEBSERVICE);
+            weatherServiceWs = new WeatherService(wsdlUrl).getWeatherServiceWS();
             LOG.debug("Weather client created successfully");
         } catch (Exception e) {
             throw new WeatherClientException("Cannot create weather client", e);
@@ -33,6 +33,6 @@ public class WeatherClient {
                 new com.lukascode.weather.ws.Coordinates();
         coord.setLat(coordinates.lat);
         coord.setLon(coordinates.lon);
-        return weatherServiceWS.getWeather(coord);
+        return weatherServiceWs.getWeather(coord);
     }
 }

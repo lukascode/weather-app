@@ -24,7 +24,7 @@ class PhotoResolverUriBuilder implements UriBuilder {
     public URI build(UriTemplateHandler uriTemplateHandler) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromUri(uriTemplateHandler.expand(PHOTO_PATH));
         builder = builder.queryParam("photo_reference", photo.getReference());
-        builder = builder.queryParam("maxwidth",photo.getWidth());
+        builder = builder.queryParam("maxwidth", photo.getWidth());
         return builder.build().toUri();
     }
 }
