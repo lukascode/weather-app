@@ -17,7 +17,7 @@ import spock.lang.Specification
 )
 class LocalizationApiSpec extends Specification {
 
-    private static final String HOST = "http://localhost:";
+    private static final String HOST = "http://localhost:"
 
     private static final String TEST_LANG = "en"
     private static final String TEST_INPUT = "Warsaw"

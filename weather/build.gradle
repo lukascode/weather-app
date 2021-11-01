@@ -2,7 +2,7 @@ plugins {
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
     id 'java'
-//    id 'com.github.bjornvester.wsdl2java' version '1.2'
+    id 'groovy'
 }
 
 group 'com.lukascode'
@@ -18,19 +18,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.apache.cxf:cxf-spring-boot-starter-jaxws:3.4.5'
     implementation project(':weather-specification')
-    implementation project(':client:weather-client')
     implementation 'javax.jws:javax.jws-api:1.1'
+    testImplementation project(':client:weather-client')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.spockframework:spock-spring:2.0-groovy-3.0'
+    testImplementation 'com.github.tomakehurst:wiremock-jre8:2.31.0'
 }
 
 test {
     useJUnitPlatform()
 }
-
-//wsdl2java {
-//    packageName = "com.lukascode.weather.ws"
-//    wsdlDir = layout.projectDirectory.dir("src/main/resources/ws")
-//    options = [
-//            "-validate",
-//    ]
-//}
