@@ -5,4 +5,5 @@ include 'weather-specification'
 include 'client'
 include 'client:location-client'
 include 'client:weather-client'
+include 'front'
 

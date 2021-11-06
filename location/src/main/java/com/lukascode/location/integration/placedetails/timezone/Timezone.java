@@ -1,5 +1,6 @@
 package com.lukascode.location.integration.placedetails.timezone;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Timezone {
@@ -11,7 +12,10 @@ public class Timezone {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String status;
 
-    public Timezone(String timeZoneId, String timeZoneName, String status) {
+    @JsonCreator
+    public Timezone(@JsonProperty("timeZoneId") String timeZoneId,
+                    @JsonProperty("timeZoneName") String timeZoneName,
+                    @JsonProperty("status") String status) {
         this.timeZoneId = timeZoneId;
         this.timeZoneName = timeZoneName;
         this.status = status;

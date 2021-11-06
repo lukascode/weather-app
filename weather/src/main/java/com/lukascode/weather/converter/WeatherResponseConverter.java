@@ -4,6 +4,7 @@ import com.lukascode.weather.integration.dto.Weather;
 import com.lukascode.weather.ws.Clouds;
 import com.lukascode.weather.ws.Main;
 import com.lukascode.weather.ws.Sys;
+import com.lukascode.weather.ws.Wind;
 
 public class WeatherResponseConverter {
 
@@ -13,6 +14,7 @@ public class WeatherResponseConverter {
         weatherDto.setMain(getMain(weather));
         weatherDto.setSys(getSys(weather));
         weatherDto.setClouds(getClouds(weather));
+        weatherDto.setWind(getWind(weather));
         return weatherDto;
     }
 
@@ -28,6 +30,7 @@ public class WeatherResponseConverter {
 
     private Sys getSys(Weather weather) {
         Sys sys = new Sys();
+        sys.setCountry(weather.sys.country);
         sys.setSunrise(weather.sys.sunrise);
         sys.setSunset(weather.sys.sunset);
         return sys;
@@ -37,5 +40,11 @@ public class WeatherResponseConverter {
         Clouds clouds = new Clouds();
         clouds.setAll(weather.clouds.all);
         return clouds;
+    }
+
+    private Wind getWind(Weather weather) {
+        Wind wind = new Wind();
+        wind.setSpeed(weather.wind.speed);
+        return wind;
     }
 }

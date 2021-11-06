@@ -2,10 +2,8 @@ plugins {
     id 'java'
 }
 
-group = "$projectGroupId"
-version = "$projectVersion"
-sourceCompatibility = "$javaVersion"
-
 repositories {
     mavenCentral()
 }
+
+jar.enabled = false

@@ -1,0 +1,8 @@
+server:
+  port: 8080
+external-apis:
+  location: http://localhost:8443
+  weather: http://localhost:9443
+info:
+  build:
+    version: ${version?:unknown}

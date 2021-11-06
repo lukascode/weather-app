@@ -4,6 +4,7 @@ import com.lukascode.weather.integration.dto.Clouds
 import com.lukascode.weather.integration.dto.Main
 import com.lukascode.weather.integration.dto.Sys
 import com.lukascode.weather.integration.dto.Weather
+import com.lukascode.weather.integration.dto.Wind
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
@@ -41,10 +42,11 @@ class WeatherServiceSpec extends Specification {
 
     private static ResponseEntity<Weather> prepareTestWeather() {
         def weather = new Weather(
-                new Sys(1635659124, 1635693198),
+                new Sys("PL", 1635659124, 1635693198),
                 new Main(9.38, 7.44, 8.7, 12.03, 77),
                 new Clouds(0),
-                10000
+                10000,
+                new Wind(4)
         )
         return new ResponseEntity<Weather>(weather, HttpStatus.OK)
     }

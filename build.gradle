@@ -12,11 +12,16 @@ buildscript {
 		jakartaBindApiVersion = '2.3.3'
 		jakartaJAXBVersion = '2.3.3'
 		javaxJwsApiVersion = '1.1'
+		jaxwsRtVersion = '2.3.3'
 		wsdl2javaVersion = '1.2'
 		wiremockVersion = '2.31.0'
 		groovyVersion = '2.0-groovy-3.0'
 		apacheCxfBootVersion = '3.4.5'
 		jsonPathVersion = '2.6.0'
+		bootstrapVersion = '4.0.0-2'
+		bootstrapAutocompleteVersion = '2.3.7'
+		bootstrapIconsVersion = '1.7.0'
+		apacheCommonsLang3Version = '3.12.0'
 	}
 }
 
@@ -28,10 +33,6 @@ plugins {
 	id 'checkstyle'
 }
 
-group = "$projectGroupId"
-version = "$projectVersion"
-sourceCompatibility = "$javaVersion"
-
 repositories {
 	mavenCentral()
 }
@@ -39,3 +40,5 @@ repositories {
 bootJar {
 	enabled = false
 }
+
+jar.enabled = false

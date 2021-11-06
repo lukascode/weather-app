@@ -1,0 +1,22 @@
+[
+    {
+        "placeId": 1,
+        "text": "Warsaw"
+    },
+    {
+        "placeId": 2,
+        "text": "Bialystok"
+    },
+    {
+        "placeId": 3,
+        "text": "Gdansk"
+    },
+    {
+        "placeId": 4,
+        "text": "Poznan"
+    },
+    {
+        "placeId": 5,
+        "text": "Wroclaw"
+    }
+]

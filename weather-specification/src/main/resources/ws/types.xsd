@@ -4,42 +4,50 @@
            targetNamespace="http://lukascode.com/WeatherService/types">
 
     <xs:complexType name="Coordinates">
-        <xs:sequence>
+        <xs:all>
             <xs:element name="lat" type="xs:double"/>
             <xs:element name="lon" type="xs:double"/>
-        </xs:sequence>
+        </xs:all>
     </xs:complexType>
 
     <xs:complexType name="Weather">
-        <xs:sequence>
+        <xs:all>
             <xs:element name="sys" type="Sys"/>
             <xs:element name="main" type="Main"/>
             <xs:element name="clouds" type="Clouds"/>
+            <xs:element name="wind" type="Wind"/>
             <xs:element name="visibility" type="xs:int"/>
-        </xs:sequence>
+        </xs:all>
     </xs:complexType>
 
     <xs:complexType name="Sys">
-        <xs:sequence>
+        <xs:all>
+            <xs:element name="country" type="xs:string"/>
             <xs:element name="sunrise" type="xs:long"/>
             <xs:element name="sunset" type="xs:long"/>
-        </xs:sequence>
+        </xs:all>
     </xs:complexType>
 
     <xs:complexType name="Main">
-        <xs:sequence>
+        <xs:all>
             <xs:element name="temp" type="xs:double"/>
             <xs:element name="feelsLike" type="xs:double"/>
             <xs:element name="tempMin" type="xs:double"/>
             <xs:element name="tempMax" type="xs:double"/>
             <xs:element name="humidity" type="xs:int"/>
-        </xs:sequence>
+        </xs:all>
     </xs:complexType>
 
     <xs:complexType name="Clouds">
-        <xs:sequence>
+        <xs:all>
             <xs:element name="all" type="xs:long"/>
-        </xs:sequence>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="Wind">
+        <xs:all>
+            <xs:element name="speed" type="xs:double"/>
+        </xs:all>
     </xs:complexType>
 
 </xs:schema>
