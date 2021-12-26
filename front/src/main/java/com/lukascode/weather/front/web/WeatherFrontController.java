@@ -4,6 +4,7 @@ import com.lukascode.weather.front.domain.WeatherFrontService;
 import com.lukascode.weather.front.infrastructure.configuration.AppVersion;
 import com.lukascode.weather.front.util.CountryFlagUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,9 @@ public class WeatherFrontController {
     @Autowired
     private WeatherFrontService weatherService;
 
+    @Value("${google.maps.api.uri}")
+    private String googleMapsApi;
+
     @GetMapping("/")
     public String index(Model model, @RequestParam Optional<String> placeId) {
         model.addAttribute("appVersion", appVersion.getAppVersion());
@@ -30,6 +34,7 @@ public class WeatherFrontController {
                     model.addAttribute("weatherAndLocation", weatherAndLocation);
                     model.addAttribute("countryFlag",
                             CountryFlagUtil.getCountryFlag(weatherAndLocation.placeWeather.country));
+                    model.addAttribute("googleMapsApi", googleMapsApi);
                 });
         return "index";
     }

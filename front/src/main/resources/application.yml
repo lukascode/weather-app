@@ -1,8 +1,14 @@
 server:
   port: 8080
+logging:
+  level:
+    com.lukascode.weather.front: DEBUG
 external-apis:
   location: http://localhost:8443
   weather: http://localhost:9443
+google.maps.api:
+  uri: https://maps.googleapis.com/maps/api/js?key=${google.maps.api.key}&callback=initMap&v=weekly
+  key: AIzaSyC6xS_wy9sFbN0ykRcZ3MMVvoxILLjLXVk
 info:
   build:
-    version: ${version?:unknown}
+    version: 1.0.0

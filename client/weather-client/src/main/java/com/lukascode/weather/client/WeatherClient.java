@@ -29,10 +29,14 @@ public class WeatherClient {
 
     public Weather fetchWeather(Coordinates coordinates) {
         LOG.debug("Fetching weather for coordinates {lat: {}, lon: {}}", coordinates.lat, coordinates.lon);
-        com.lukascode.weather.ws.Coordinates coord =
-                new com.lukascode.weather.ws.Coordinates();
-        coord.setLat(coordinates.lat);
-        coord.setLon(coordinates.lon);
-        return weatherServiceWs.getWeather(coord);
+        try {
+            com.lukascode.weather.ws.Coordinates coord =
+                    new com.lukascode.weather.ws.Coordinates();
+            coord.setLat(coordinates.lat);
+            coord.setLon(coordinates.lon);
+            return weatherServiceWs.getWeather(coord);
+        } catch (Exception e) {
+            throw new WeatherClientException("Cannot fetch weather", e);
+        }
     }
 }

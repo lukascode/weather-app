@@ -12,97 +12,141 @@
         .photo {
             opacity: 0.95;
         }
+
         .photo:hover {
             opacity: 1;
+        }
+
+        #map {
+            width: 100%;
+            height: 400px;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img th:src="@{/img/weather.png}" alt="weather" width="32" height="32" class="d-inline-block align-text-center">
-                WeatherApp
-            </a>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/img/weather.png}" alt="weather" width="32" height="32"
+                 class="d-inline-block align-text-center">
+            WeatherApp
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row" th:class="'mt-4'">
+        <div class="col">
+            <input
+                    class="form-control basicAutoComplete"
+                    autocomplete="off"
+                    placeholder="Search city..."
+                    data-url="/locations">
         </div>
-    </nav>
-
-    <div class="container">
-        <div class="row" th:class="'mt-4'">
-            <div class="col">
-                <input
-                        class="form-control basicAutoComplete"
-                        autocomplete="off"
-                        placeholder="Search city..."
-                        data-url="/locations">
-            </div>
-            <div class="col mt-3" th:if="${weatherAndLocation != null}">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <span th:text="${countryFlag}"></span>
-                                <span class="font-weight-bold" th:text="${weatherAndLocation.placeDetails.formattedAddress}"></span>,
-                                <span th:text="${weatherAndLocation.placeDetails.timezone.timeZoneName}"></span>
-                                (<span th:text="${weatherAndLocation.placeDetails.timezone.timeZoneId}"></span>),
-                                geo [<span th:text="${weatherAndLocation.placeDetails.coordinates.lat}"></span>,
-                                <span th:text="${weatherAndLocation.placeDetails.coordinates.lng}"></span>]
-                            </div>
+        <div class="col mt-3" th:if="${weatherAndLocation != null}">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <span th:text="${countryFlag}"></span>
+                            <span class="font-weight-bold"
+                                  th:text="${weatherAndLocation.placeDetails.formattedAddress}"></span>,
+                            <span th:text="${weatherAndLocation.placeDetails.timezone.timeZoneName}"></span>
+                            (<span th:text="${weatherAndLocation.placeDetails.timezone.timeZoneId}"></span>),
+                            geo [<span th:text="${weatherAndLocation.placeDetails.coordinates.lat}"></span>,
+                            <span th:text="${weatherAndLocation.placeDetails.coordinates.lng}"></span>]
                         </div>
-                        <div class="row mt-2">
-                            <div class="col">
-                                <i class="bi bi-thermometer-sun"></i>
-                                <span class="font-weight-bold" th:text="${weatherAndLocation.placeWeather.temp}"></span>°С temperature
-                                from <span th:text="${weatherAndLocation.placeWeather.tempMin}"></span> to
-                                <span th:text="${weatherAndLocation.placeWeather.tempMax}"></span> °С |
-                                <i class="bi bi-wind"></i>
-                                wind <span th:text="${weatherAndLocation.placeWeather.windSpeed}"></span> m/s |
-                                <i class="bi bi-clouds-fill"></i>
-                                clouds <span th:text="${weatherAndLocation.placeWeather.clouds}"></span> % |
-                                <i class="bi bi-droplet-half"></i>
-                                humidity <span th:text="${weatherAndLocation.placeWeather.humidity}"></span> %
-                            </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <i class="bi bi-thermometer-sun"></i>
+                            <span class="font-weight-bold" th:text="${weatherAndLocation.placeWeather.temp}"></span>°С
+                            temperature
+                            from <span th:text="${weatherAndLocation.placeWeather.tempMin}"></span> to
+                            <span th:text="${weatherAndLocation.placeWeather.tempMax}"></span> °С |
+                            <i class="bi bi-wind"></i>
+                            wind <span th:text="${weatherAndLocation.placeWeather.windSpeed}"></span> m/s |
+                            <i class="bi bi-clouds-fill"></i>
+                            clouds <span th:text="${weatherAndLocation.placeWeather.clouds}"></span> % |
+                            <i class="bi bi-droplet-half"></i>
+                            humidity <span th:text="${weatherAndLocation.placeWeather.humidity}"></span> %
                         </div>
-                        <div class="row mt-2">
-                            <div class="col">
-                                <i class="bi bi-sunrise"></i>
-                                sunrise: <span th:text="${weatherAndLocation.placeWeather.sunriseTime}"></span> |
-                                sunset: <span th:text="${weatherAndLocation.placeWeather.sunsetTime}"></span>
-                                <i class="bi bi-sunset-fill"></i> |
-                                currentTime: <span th:text="${weatherAndLocation.currentTime}"></span>
-                                <i class="bi bi-smartwatch"></i>
-                            </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <i class="bi bi-sunrise"></i>
+                            sunrise: <span th:text="${weatherAndLocation.placeWeather.sunriseTime}"></span> |
+                            sunset: <span th:text="${weatherAndLocation.placeWeather.sunsetTime}"></span>
+                            <i class="bi bi-sunset-fill"></i> |
+                            currentTime: <span th:text="${weatherAndLocation.currentTime}"></span>
+                            <i class="bi bi-smartwatch"></i>
                         </div>
                     </div>
                 </div>
-
-                <div class="row mt-3">
-                    <div class="col d-flex flex-row flex-wrap justify-content-start p-2">
-                        <th:block th:each="photo:${weatherAndLocation.placeDetails.photos}">
-                            <a th:href="${photo.reference}" target="_blank">
-                                <img class="photo m-1" width="200" height="200" th:src="${photo.reference}" alt="photo of place">
-                            </a>
-                        </th:block>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col d-flex flex-row flex-wrap justify-content-center p-2">
+                    <th:block th:each="photo:${weatherAndLocation.placeDetails.photos}">
+                        <a th:href="${photo.reference}" target="_blank">
+                            <img class="photo m-1" width="200" height="200" th:src="${photo.reference}"
+                                 alt="photo of place">
+                        </a>
+                    </th:block>
+                </div>
+            </div>
+
+            <script th:src="@{/js/nightStyle.js}"></script>
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                function initMap() {
+                    var location = {
+                        lat: /*[[${weatherAndLocation.placeDetails.coordinates.lat}]]*/ 52.2296756,
+                        lng: /*[[${weatherAndLocation.placeDetails.coordinates.lng}]]*/ 21.0122287
+                    };
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: location,
+                        zoom: 10
+                    });
+
+                    var isNight = /*[[${weatherAndLocation.isNight}]]*/ false;
+
+                    if (isNight) {
+                        map.setOptions({ styles: nightStyle});
+                    }
+
+                    var marker = new google.maps.Marker({
+                        position: location,
+                        map: map
+                    });
+                }
+                /*]]>*/
+            </script>
+
         </div>
     </div>
+</div>
 
 <!--    <p th:text="${appVersion}"></p>-->
 
-    <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap-autocomplete/2.3.7/dist/latest/bootstrap-autocomplete.min.js}"></script>
-    <script>
-        $('.basicAutoComplete').autoComplete();
-        $('.basicAutoComplete').on('autocomplete.select', (evt, item) => {
-            console.log(item);
-            location.href = '/?placeId=' + item['placeId']
-        })
-    </script>
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-autocomplete/2.3.7/dist/latest/bootstrap-autocomplete.min.js}"></script>
+<script>
+    $('.basicAutoComplete').autoComplete();
+    $('.basicAutoComplete').on('autocomplete.select', (evt, item) => {
+        console.log(item);
+        location.href = '/?placeId=' + item['placeId']
+    });
+</script>
+<script async th:src="${googleMapsApi}"></script>
 </body>
 </html>

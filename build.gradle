@@ -2,7 +2,7 @@ buildscript {
 	ext {
 		javaVersion = '11'
 		projectGroupId = 'com.lukascode.weather'
-		projectVersion = '0.0.1-SNAPSHOT'
+		projectVersion = '1.0.0'
 		springBootVersion = '2.5.5'
 		springDependencyManagementVersion = '1.0.11.RELEASE'
 		springWebVersion = '5.3.10'
@@ -22,6 +22,7 @@ buildscript {
 		bootstrapAutocompleteVersion = '2.3.7'
 		bootstrapIconsVersion = '1.7.0'
 		apacheCommonsLang3Version = '3.12.0'
+		resilience4jVersion = '1.7.1'
 	}
 }
 

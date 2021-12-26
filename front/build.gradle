@@ -23,6 +23,9 @@ dependencies {
     implementation "org.webjars.npm:bootstrap-autocomplete:$bootstrapAutocompleteVersion"
     implementation "org.webjars.npm:bootstrap-icons:$bootstrapIconsVersion"
     implementation "org.apache.commons:commons-lang3:$apacheCommonsLang3Version"
+    implementation "io.github.resilience4j:resilience4j-all:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-retry:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-circuitbreaker:${resilience4jVersion}"
     implementation project(':client:location-client')
     implementation project(':client:weather-client')
     implementation project(':weather-specification')
@@ -37,10 +40,4 @@ test {
 checkstyle {
     configFile = file("$rootProject.projectDir/config/checkstyle/google_checks.xml")
     ignoreFailures = false
-}
-
-processResources {
-    filesMatching('application.yml') {
-        expand(project.properties)
-    }
 }

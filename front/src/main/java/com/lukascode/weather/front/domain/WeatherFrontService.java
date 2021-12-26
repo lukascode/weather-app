@@ -5,8 +5,8 @@ import com.lukascode.location.client.dto.PlaceDetails;
 import com.lukascode.location.client.dto.Predictions;
 import com.lukascode.weather.client.Coordinates;
 import com.lukascode.weather.client.WeatherClient;
+import com.lukascode.weather.front.util.DateUtil;
 import com.lukascode.weather.front.web.Location;
-
 import com.lukascode.weather.front.web.WeatherAndLocationDetails;
 import com.lukascode.weather.ws.Weather;
 import org.apache.commons.lang3.tuple.Pair;
@@ -76,6 +76,7 @@ public class WeatherFrontService {
                         weather.getSys().getCountry(),
                         sunrise.format(TIME_FORMATTER),
                         sunset.format(TIME_FORMATTER)
-                ), currentTime.format(TIME_FORMATTER));
+                ), currentTime.format(TIME_FORMATTER),
+                DateUtil.isNight(currentTime));
     }
 }

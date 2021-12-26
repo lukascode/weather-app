@@ -7,11 +7,16 @@ public class WeatherAndLocationDetails {
     public final PlaceDetails placeDetails;
     public final PlaceWeather placeWeather;
     public final String currentTime;
+    public final boolean isNight;
 
-    public WeatherAndLocationDetails(PlaceDetails placeDetails, PlaceWeather placeWeather, String currentTime) {
+    public WeatherAndLocationDetails(PlaceDetails placeDetails,
+                                     PlaceWeather placeWeather,
+                                     String currentTime,
+                                     boolean isNight) {
         this.placeDetails = placeDetails;
         this.placeWeather = placeWeather;
         this.currentTime = currentTime;
+        this.isNight = isNight;
     }
 
     public static class PlaceWeather {
