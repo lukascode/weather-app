@@ -13,4 +13,4 @@ Simple weather app that uses the following external APIs:
 
 #### Demo
 
-![alt tag](https://raw.githubusercontent.com/lukascode/weather-app/master/demo.gif)
+![alt tag](https://github.com/lukascode/weather-app/blob/master/demo.gif?raw=true)
